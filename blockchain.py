@@ -64,6 +64,16 @@ def display_blockchain(blockchain):
         print(f"Hash: {block.hash}")
         print(f"Previous Hash: {block.previous_hash}\n")
 
+# functions to tamper with the blockchain (for demo purposes)
+def tamper_block(blockchain, index, new_data):
+    """Manually change the data of a block (for demo purposes)."""
+    if 0 <= index < len(blockchain):
+        blockchain[index].data = new_data
+        print(f"Block #{index} data has been tampered with!")
+    else:
+        print("Invalid block index.")
+
+
 # main function to run the blockchain
 
 if __name__ == "__main__":
@@ -75,7 +85,10 @@ if __name__ == "__main__":
         print("1. Add a new block")
         print("2. Display blockchain")
         print("3. Validate blockchain")
-        print("4. Exit")
+        print("4. Tamper with a block (demo)")
+        print("5. Exit")
+    
+
 
         choice = input("Enter your choice: ")
 # Process user input
@@ -92,11 +105,21 @@ if __name__ == "__main__":
         elif choice == "3":
             is_valid = validate_blockchain(blockchain)
             if is_valid:
-                print("Blockchain is valid ✅")
+                print("Blockchain is valid ")
             else:
-                print("Blockchain has been tampered! ❌")
-# Exit the program
+                print("Blockchain has been tampered! ")
+
+#  Tamper with a block
         elif choice == "4":
+            try:
+                index = int(input("Enter block index to tamper: "))
+                new_data = input("Enter new data for the block: ")
+                tamper_block(blockchain, index, new_data)
+            except ValueError:
+                print("Invalid input, enter a number for the block index.")
+
+# Exit the program
+        elif choice == "5":
             print("Exiting...")
             break
 # Handle invalid input
