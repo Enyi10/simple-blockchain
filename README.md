@@ -13,9 +13,11 @@ The project was created for the INFO6001: Blockchain Technology and Applications
 
 ## Features
 - **Genesis Block Creation:** The first block in the chain.
-- **Add New Blocks:** Create new blocks with transaction or arbitrary data.
+- **Add New Blocks:** Users can input custom data to create new blocks.
 - **Hash Linking:** Each block stores the hash of the previous block to maintain the chain.
-- **Demo Run:** Adds 5 sample blocks to show blockchain functionality.
+- **Blockchain Display:** View all blocks with their timestamps, data, hashes, and previous hashes.
+- **Blockchain Validation:** Verify if any block has been tampered with.
+- **Interactive Menu:** Add blocks, display blockchain, validate, or exit the program.
 
 ---
 
