@@ -1,95 +1,117 @@
+
+-----
+
 # Simple Blockchain Project
 
 ## Overview
-This is a simple blockchain application implemented in Python. It demonstrates the core concepts of blockchain technology including:
 
-- Creating blocks
-- Linking blocks via hashes
-- Validating the integrity of the blockchain
+This Python-based application demonstrates the fundamental concepts of blockchain technology. The project was developed for the **INFO6001: Blockchain Technology and Applications** unit at Southern Cross University. It showcases key principles such as block creation, cryptographic linking, and chain validation.
 
-The project was created for the INFO6001: Blockchain Technology and Applications assessment at Southern Cross University.
-
----
+-----
 
 ## Features
-- **Genesis Block Creation:** The first block in the chain.
-- **Add New Blocks:** Users can input custom data to create new blocks.
-- **Hash Linking:** Each block stores the hash of the previous block to maintain the chain.
-- **Blockchain Display:** View all blocks with their timestamps, data, hashes, and previous hashes.
-- **Blockchain Validation:** Verify if any block has been tampered with.
-- **Interactive Menu:** Add blocks, display blockchain, validate, or exit the program.
 
----
+  * **Block Generation:** The application automatically creates a genesis block and allows users to append new blocks to the chain.
+  * **Cryptographic Integrity:** Each block is linked to the previous one using its unique hash, forming a secure and tamper-evident chain.
+  * **Data Validation:** A built-in function verifies the entire blockchain to detect any unauthorized modifications to the blocks or their data.
+  * **Interactive Interface:** A simple command-line menu guides the user to perform various actions, including adding data, viewing the chain, and validating its integrity.
+
+-----
 
 ## How to Run
-1. Clone this repository:
-   
-```bash
-git clone https://github.com/Enyi10/simple-blockchain.git
 
-3. Navigate to the project directory:
+1.  **Clone the repository from GitHub:**
 
-```bash
-cd simple-blockchain
+    ```bash
+    git clone https://github.com/Enyi10/simple-blockchain.git
+    ```
 
-3.Run the blockchain application:
+2.  **Navigate to the project directory:**
 
-```bash
-python blockchain.py
+    ```bash
+    cd simple-blockchain
+    ```
 
-Example Outputs
-Step 1 – Genesis Block Creation
+3.  **Execute the Python script:**
 
-When the program first runs, the Genesis Block is created automatically:
+    ```bash
+    python blockchain.py
+    ```
 
-Genesis Block created!
-Block 0 [Timestamp: 2025-08-17 12:00:00]
-Data: Genesis Block
-Hash: 6d8a1c8e9b93f2e9b6b5a6a8d7d2e9d6a7b9c3d1e0a1f2c3b4d5e6f7a8b9c0d1
+-----
+
+## Example Outputs
+
+### Step 1 – Genesis Block Creation
+
+The program initializes by generating the first block:
+
+```
+✅ Block #0 added successfully!
+```
+
+### Step 2 – Adding New Blocks
+
+After adding two new blocks, the chain grows in length:
+
+```
+Enter block data: First transaction data
+ Block #1 added successfully!
+
+Enter block data: Second transaction data
+ Block #2 added successfully!
+```
+
+### Step 3 – Displaying the Blockchain
+
+The display option provides a clear, formatted view of all blocks and their details:
+
+```
+==================================================
+                 BLOCKCHAIN CONTENTS
+==================================================
+
+--- Block #0 ---
+Timestamp:   Mon Aug 18 15:04:05 2025
+Data:        Genesis Block
+Hash:        ...
 Previous Hash: 0
 
-Step 2 – Adding New Blocks
+--- Block #1 ---
+Timestamp:   Mon Aug 18 15:05:05 2025
+Data:        First transaction data
+Hash:        ...
+Previous Hash: ...
 
-When a user adds new data, the chain updates:
+--- Block #2 ---
+Timestamp:   Mon Aug 18 15:06:05 2025
+Data:        Second transaction data
+Hash:        ...
+Previous Hash: ...
+==================================================
+```
 
-New Block added!
-Block 1 [Timestamp: 2025-08-17 12:05:00]
-Data: First transaction data
-Hash: 3a6b1c9d7e2f8a0b6c1d9a3f5b7c8d2e1f4a3c6e8b9d0f2a1b3c5d7e9f0a2b3c
-Previous Hash: 6d8a1c8e9b93f2e9b6b5a6a8d7d2e9d6a7b9c3d1e0a1f2c3b4d5e6f7a8b9c0d1
+### Step 4 – Blockchain Validation
 
-New Block added!
-Block 2 [Timestamp: 2025-08-17 12:10:00]
-Data: Second transaction data
-Hash: 4b7c2d8e9f1a3b5c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c
-Previous Hash: 3a6b1c9d7e2f8a0b6c1d9a3f5b7c8d2e1f4a3c6e8b9d0f2a1b3c5d7e9f0a2b3c
+The system verifies the chain's integrity:
 
-Step 3 – Display Blockchain
+```
+ Blockchain is valid and has not been tampered with.
+```
 
-Selecting the option to display shows the full chain:
+If a block is tampered with, the validation process will indicate a failure:
 
-Block 0 [Timestamp: 2025-08-17 12:00:00]
-Data: Genesis Block
-Hash: 6d8a1c8e9b93f2e9b6b5a6a8d7d2e9d6a7b9c3d1e0a1f2c3b4d5e6f7a8b9c0d1
-Previous Hash: 0
+```
+Enter block index to tamper: 1
+Enter new data for the block: Malicious Data
+ Block #1 data has been tampered with!
 
-Block 1 [Timestamp: 2025-08-17 12:05:00]
-Data: First transaction data
-Hash: 3a6b1c9d7e2f8a0b6c1d9a3f5b7c8d2e1f4a3c6e8b9d0f2a1b3c5d7e9f0a2b3c
-Previous Hash: 6d8a1c8e9b93f2e9b6b5a6a8d7d2e9d6a7b9c3d1e0a1f2c3b4d5e6f7a8b9c0d1
+Enter your choice: 3
+ Blockchain integrity compromised! Tampering detected.
+```
 
-Block 2 [Timestamp: 2025-08-17 12:10:00]
-Data: Second transaction data
-Hash: 4b7c2d8e9f1a3b5c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c
-Previous Hash: 3a6b1c9d7e2f8a0b6c1d9a3f5b7c8d2e1f4a3c6e8b9d0f2a1b3c5d7e9f0a2b3c
+-----
 
-Step 4 – Blockchain Validation
+## Academic Integrity
 
-When checking validity:
-
-Blockchain is valid ✅
-
-
-If someone tampers with a block’s data:
-
-Blockchain is invalid ❌
+I acknowledge that I have **not knowingly used GenAI** to complete this assessment. All code and documentation have been created by me without the use of artificial intelligence tools.
